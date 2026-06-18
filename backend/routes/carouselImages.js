@@ -2,23 +2,27 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const CarouselImage = require('../models/CarouselImage'); // 确保 CarouselImage 模型文件路径正确
-const authenticateToken = require('../middleware/authenticateToken'); // 假设您的认证中间件放在这里，或者调整路径
+const fs = require('fs');
+const CarouselImage = require('../models/CarouselImage');
+const authenticateToken = require('../middleware/authenticateToken');
 
-// Multer 配置：将图片存储到 backend/public/uploads/carousel
+const uploadDir = path.join(__dirname, '../public/uploads/carousel');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    // 从 routes 文件夹出发，../ 指向 backend, 然后进入 public/uploads/carousel
-    cb(null, path.join(__dirname, '../public/uploads/carousel'));
+    cb(null, uploadDir);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '-')); // 替换文件名中的空格，避免潜在问题
+    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '-'));
   }
 });
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1024 * 1024 * 5 }, // 限制文件大小为 5MB
+  limits: { fileSize: 1024 * 1024 * 10 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   }
@@ -39,20 +43,22 @@ function checkFileType(file, cb) {
 
 // POST /api/carousel - 上传新的轮播图片 (需要认证)
 router.post('/', authenticateToken, upload.single('image'), async (req, res) => {
-  console.log('--- /api/carousel POST request received ---'); // 添加日志
+  console.log('--- /api/carousel POST request received ---');
   if (!req.file) {
     return res.status(400).json({ message: 'No image file uploaded.' });
   }
   try {
     const newCarouselImage = new CarouselImage({
       filename: req.file.filename,
-      path: '/public/uploads/carousel/' + req.file.filename, // 存储相对路径，用于前端访问
+      path: '/public/uploads/carousel/' + req.file.filename,
       originalname: req.file.originalname
     });
     await newCarouselImage.save();
     res.status(201).json({
-      message: 'Carousel image uploaded successfully!',
-      image: newCarouselImage
+      url: '/public/uploads/carousel/' + req.file.filename,
+      title: req.body.title || '新增图片',
+      description: req.body.description || '自定义描述',
+      _id: newCarouselImage._id
     });
   } catch (error) {
     console.error('Error uploading carousel image:', error);
