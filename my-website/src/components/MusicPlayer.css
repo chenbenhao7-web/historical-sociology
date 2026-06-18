@@ -1,0 +1,80 @@
+.volume-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100px; /* 限制音量控制条宽度 */
+  margin: 0 10px;
+}
+
+.volume-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 2px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1976d2;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 确保整个播放器容器不会溢出 */
+.music-player {
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 100%;
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 在 MusicPlayer.css 中添加或修改样式 */
+.rhap_container {
+  background-color: transparent !important;  /* 强制播放器背景透明 */
+  box-shadow: none !important;
+}
+
+.rhap_time, .rhap_current-time, .rhap_total-time {
+  color: #000 !important;  /* 保持时间文字可见 */
+}
+
+.rhap_progress-filled {
+  background-color: #2196F3 !important;  /* 进度条也使用相同的蓝色 */
+}
+
+.rhap_progress-bar, .rhap_volume-bar {
+  background-color: rgba(0, 0, 0, 0.2) !important;  /* 进度条背景更透明 */
+}
+
+/* 修改播放器控件颜色 */
+.rhap_main-controls-button {
+  color: #2196F3 !important;  /* 使用更亮的蓝色 */
+  font-size: 28px !important;  /* 增大按钮尺寸 */
+  filter: drop-shadow(0 0 2px rgba(33, 150, 243, 0.5)); /* 添加发光效果 */
+}
+
+.rhap_volume-button {
+  color: #2196F3 !important;
+}
+
+.rhap_progress-indicator {
+  background: #2196F3 !important;  /* 进度条指示器 */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.8); /* 添加发光效果 */
+}
+
+.rhap_volume-indicator {
+  background: #2196F3 !important;  /* 音量控制指示器 */
+  box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
+}
+
+/* 按钮悬停效果 */
+.rhap_main-controls-button:hover {
+  transform: scale(1.1);  /* 悬停时稍微放大 */
+  filter: drop-shadow(0 0 4px rgba(33, 150, 243, 0.8)); /* 增强发光效果 */
+} 

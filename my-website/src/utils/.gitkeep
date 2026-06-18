@@ -1,0 +1,8 @@
+Remove-Item : 找不到接受实际参数“src/App.css”的位置形式参数。
+所在位置 行:1 字符: 1
++ rm src/logo.svg src/App.css src/index.css src/reportWebVitals.js
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Remove-Item]，ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.RemoveItemCommand
+ 
+PS E:\广州大学社会学系\备课\历史社会学\第五章 历史社会学与网站设计\网站\my-website>

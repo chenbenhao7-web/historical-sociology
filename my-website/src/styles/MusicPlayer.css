@@ -1,0 +1,166 @@
+.rhap_container {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 10px !important;
+  width: 100% !important;
+}
+
+.rhap_time {
+  color: #333 !important;
+}
+
+.rhap_progress-bar {
+  background-color: #e0e0e0 !important;
+}
+
+.rhap_progress-filled {
+  background-color: #1976d2 !important;
+}
+
+.rhap_progress-indicator {
+  background: #1976d2 !important;
+}
+
+.rhap_controls-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+  height: 40px !important;
+}
+
+.rhap_volume-controls {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex: 0 1 120px !important;
+  margin-left: auto !important;
+}
+
+.rhap_volume-button {
+  color: #1976d2 !important;
+  margin-right: 8px !important;
+  flex: 0 0 auto !important;
+}
+
+.rhap_volume-bar-area {
+  display: flex !important;
+  align-items: center !important;
+  width: 60px !important;
+  margin-right: 8px !important;
+  position: relative !important;
+  height: 20px !important;
+}
+
+.rhap_volume-bar {
+  height: 4px !important;
+  background-color: #e0e0e0 !important;
+  border-radius: 2px !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 100% !important;
+}
+
+.rhap_volume-indicator {
+  width: 12px !important;
+  height: 12px !important;
+  background: #1976d2 !important;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2) !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin-top: 0 !important;
+}
+
+.rhap_volume-filled {
+  background-color: #1976d2 !important;
+  height: 100% !important;
+}
+
+.rhap_play-pause-button {
+  color: #1976d2 !important;
+  font-size: 40px !important;
+}
+
+.rhap_skip-button {
+  color: #1976d2 !important;
+  font-size: 24px !important;
+}
+
+.rhap_main-controls {
+  flex: 0 1 auto !important;
+  margin: 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 40px !important;
+}
+
+/* 修改播放器布局 */
+.rhap_stacked .rhap_controls-section {
+  margin-top: 10px !important;
+}
+
+.rhap_stacked .rhap_volume-controls {
+  width: 100% !important;
+}
+
+.rhap_stacked-reverse .rhap_controls-section {
+  margin-bottom: 10px !important;
+}
+
+/* 调整播放控制按钮的样式 */
+.rhap_main-controls-button,
+.rhap_play-pause-button,
+.rhap_skip-button {
+  color: #1976d2 !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  margin: 0 3px !important;
+}
+
+/* 防止按钮触发导航 */
+.rhap_button-clear {
+  pointer-events: auto !important;
+}
+
+/* 调整进度条容器 */
+.rhap_progress-section {
+  flex: 1 1 auto;
+}
+
+/* 调整控件颜色以适应新背景 */
+.rhap_main-controls-button,
+.rhap_play-pause-button,
+.rhap_skip-button {
+  color: #1976d2 !important;
+  background: transparent !important;
+}
+
+.rhap_volume-button {
+  color: #1976d2 !important;
+}
+
+.rhap_progress-filled,
+.rhap_volume-filled {
+  background-color: #1976d2 !important;
+}
+
+.rhap_progress-indicator,
+.rhap_volume-indicator {
+  background: #1976d2 !important;
+}
+
+.rhap_time {
+  color: #333 !important;
+}
+
+/* 确保播放器控件容器透明 */
+.rhap_container {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

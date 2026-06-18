@@ -1,0 +1,14 @@
+{
+  "name": "historical-sociology-website",
+  "version": "1.0.0",
+  "scripts": {
+    "install:frontend": "cd my-website && npm install",
+    "install:backend": "cd backend && npm install",
+    "build:frontend": "cd my-website && npm run build",
+    "build": "npm run install:frontend && npm run build:frontend && npm run install:backend",
+    "start": "cd backend && node src/server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
