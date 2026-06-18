@@ -23,8 +23,15 @@ require('dotenv').config();
       app.use(express.static(path.join(__dirname, '../../my-website/build')));
     }
 
-    mongoose.connect(process.env.MONGODB_URI).then(() => {
+    mongoose.connect(process.env.MONGODB_URI).then(async () => {
       console.log('MongoDB连接成功');
+      // 自动创建默认管理员
+      const existingAdmin = await User.findOne({ username: 'admin' });
+      if (!existingAdmin) {
+        const hashedPwd = await bcrypt.hash('admin123', 10);
+        await new User({ username: 'admin', password: hashedPwd }).save();
+        console.log('默认管理员已创建: admin / admin123');
+      }
     }).catch((err) => {
       console.error('MongoDB连接失败:', err);
     });
@@ -92,7 +99,7 @@ require('dotenv').config();
         // 生成JWT令牌
         const token = jwt.sign(
           { userId: user._id },
-          'your_jwt_secret', // 在生产环境中应该使用环境变量
+          JWT_SECRET,
           { expiresIn: '24h' }
         );
         
@@ -118,7 +125,7 @@ require('dotenv').config();
         return res.status(401).json({ message: '未提供认证令牌' });
       }
       
-      jwt.verify(token, 'your_jwt_secret', (err, user) => {
+      jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
           return res.status(403).json({ message: '令牌无效' });
         }
